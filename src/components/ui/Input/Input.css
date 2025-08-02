@@ -1,5 +1,5 @@
 .input {
-    width: 11rem;
+    width: 12rem;
     height: 1.8rem;
     padding: 0 0.5rem;
     border: 0;
@@ -8,7 +8,16 @@
     font-size: 0.7rem;
 }
 
+.input.block {
+    display: block;
+    width: 100%;
+}
+
 .input.type1 {
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
+}
+
+.input.type2 {
+    border-bottom: 4px solid rgb(244, 245, 246);
 }

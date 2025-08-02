@@ -1,0 +1,11 @@
+.home {
+    padding: 2rem 1rem;
+    min-height: 30rem;
+}
+
+.home .box .input {
+    height: 4rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    font-size: 1.3rem;
+}

@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
-import { ui } from '@components/ui'
+import { UI } from '@components/ui'
 import Container from '@components/layout/Container/Container'
+import useFetchUser from '@/hooks/useFetchUser'
 import './Header.css'
 
 export default function Header() {
+    const { setUserName, handleKeyUp } = useFetchUser()
+
     return (
         <header className="header">
             <Container>
@@ -14,9 +17,11 @@ export default function Header() {
                     </Link>
                 </h1>
 
-                <ui.Input
+                <UI.Input
                     placeholder={'Enter GitHub username...'}
                     className={'type1'}
+                    onChange={(e) => setUserName(e.target.value)}
+                    onKeyUp={handleKeyUp}
                 />
             </Container>
         </header>

@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Exclude environment variables
+.env
+
+# etc
+test_data.json
