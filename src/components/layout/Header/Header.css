@@ -1,0 +1,25 @@
+.header {
+    background-color: #24292e;
+}
+
+.header > .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.6rem;
+}
+
+.header .logo {
+    height: 100%;
+    align-content: center;;
+}
+
+.header .logo a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+    font-size: 1rem;
+    line-height: 1;
+    color: #fff;
+}
