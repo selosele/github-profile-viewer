@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
 import type { InputKeyboardEvent } from '@/types/input'
 import type { User } from '@/types/user'
 import { useUserStore } from '@/stores/userStore'
@@ -9,6 +10,11 @@ import { MODES } from '@/constants/mode'
 export default function useFetchUser(userName: string) {
     const navigate = useNavigate()
     const { setUserName } = useUserStore()
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ['users', userName],
+        queryFn: async () => await fetchData(),
+        enabled: !!userName,
+    })
 
     const fetchData = async (mode?: string) => {
         if (isTestMode(mode)) {
@@ -27,5 +33,11 @@ export default function useFetchUser(userName: string) {
 
     const isTestMode = (mode: string) => isNotBlank(mode) && mode === MODES.TEST && isNotBlank(userName)
 
-    return { setUserName, fetchData, handleKeyUp }
+    return {
+        data,
+        isLoading,
+        isError,
+        setUserName,
+        handleKeyUp
+    }
 }
