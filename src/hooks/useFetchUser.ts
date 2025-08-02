@@ -1,11 +1,23 @@
 import { useNavigate } from 'react-router-dom'
 import type { InputKeyboardEvent } from '@/types/input'
-import { isNotBlank } from '@/utils/lang'
+import type { User } from '@/types/user'
 import { useUserStore } from '@/stores/userStore'
+import { isNotBlank } from '@/utils/lang'
+import { http } from '@/api'
+import { MODES } from '@/constants/mode'
 
-export default function useFetchUser() {
+export default function useFetchUser(userName: string) {
     const navigate = useNavigate()
-    const { userName, setUserName } = useUserStore()
+    const { setUserName } = useUserStore()
+
+    const fetchData = async (mode?: string) => {
+        if (isTestMode(mode)) {
+            const res = await fetch('test_data.json')
+            return res.json() as Promise<User>
+        }
+        const res = await http.get(`/users/${userName}`) as User
+        return res
+    }
 
     const handleKeyUp = (e: InputKeyboardEvent) => {
         if (e.key === 'Enter' && isNotBlank(userName)) {
@@ -13,5 +25,7 @@ export default function useFetchUser() {
         }
     }
 
-    return { setUserName, handleKeyUp }
+    const isTestMode = (mode: string) => isNotBlank(mode) && mode === MODES.TEST && isNotBlank(userName)
+
+    return { setUserName, fetchData, handleKeyUp }
 }

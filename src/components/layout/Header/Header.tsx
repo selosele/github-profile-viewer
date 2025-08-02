@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import { UI } from '@components/ui'
+import { useUserStore } from '@/stores/userStore'
 import Container from '@components/layout/Container/Container'
 import useFetchUser from '@/hooks/useFetchUser'
 import './Header.css'
 
 export default function Header() {
-    const { setUserName, handleKeyUp } = useFetchUser()
+    const { userName } = useUserStore()
+    const { setUserName, handleKeyUp } = useFetchUser(userName)
 
     return (
         <header className="header">

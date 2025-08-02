@@ -7,12 +7,12 @@ import './App.css'
 export default function App() {
     return (
         <BrowserRouter>
-            <Layout.Header />
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/:userName" element={<Search />} />
+                <Route path="*" element={<Layout.Wrapper />}>
+                    <Route index element={<Home />} />
+                    <Route path=":userName" element={<Search />} />
+                </Route>
             </Routes>
-            <Layout.Footer />
         </BrowserRouter>
     )
 }

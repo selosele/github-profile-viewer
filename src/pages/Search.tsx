@@ -1,20 +1,15 @@
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import type { User } from '@/types/user'
-import { http } from '@/api'
+import { MODES } from '@/constants/mode'
 import Box from '@/components/layout/Box/Box'
+import useFetchUser from '@/hooks/useFetchUser'
 
 export default function Search() {
     const { userName } = useParams()
+    const { fetchData } = useFetchUser(userName)
     const { data, isLoading, isError } = useQuery({
         queryKey: ['users', userName],
-        queryFn: async () => {
-            const res = await http.get(`/users/${userName}`) as User
-            return res
-
-            // const res = await fetch('test_data.json')
-            // return res.json() as Promise<User>
-        },
+        queryFn: async () => await fetchData(MODES.TEST),
         enabled: !!userName,
     })
 
