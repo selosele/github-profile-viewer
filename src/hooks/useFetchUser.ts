@@ -5,14 +5,14 @@ import type { User } from '@/types/user'
 import { useUserStore } from '@/stores/userStore'
 import { isNotBlank } from '@/utils/lang'
 import { http } from '@/api'
-import { MODES } from '@/constants/mode'
+import { MODES } from '@/constants/modes'
 
 export default function useFetchUser(userName: string) {
     const navigate = useNavigate()
     const { setUserName } = useUserStore()
     const { data, isLoading, isError } = useQuery({
         queryKey: ['users', userName],
-        queryFn: async () => await fetchData(),
+        queryFn: async () => await fetchData(MODES.TEST),
         enabled: !!userName,
     })
 
@@ -21,8 +21,8 @@ export default function useFetchUser(userName: string) {
             const res = await fetch('test_data.json')
             return res.json() as Promise<User>
         }
-        const res = await http.get(`/users/${userName}`) as User
-        return res
+        const res = await http.get<User>(`/users/${userName}`)
+        return res.data
     }
 
     const handleKeyUp = (e: InputKeyboardEvent) => {

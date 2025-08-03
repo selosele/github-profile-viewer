@@ -1,4 +1,4 @@
-import { Layout } from '@components/layout'
+import { Layout } from '@/components/layout'
 import { UI } from '@/components/ui'
 import { useUserStore } from '@/stores/userStore'
 import useFetchUser from '@/hooks/useFetchUser'
