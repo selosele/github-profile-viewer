@@ -2,9 +2,5 @@ import type { ContainerProps } from '@/types/container'
 import './Container.css'
 
 export default function Container(props: ContainerProps) {
-    return (
-        <div className="container">
-            {props.children}
-        </div>
-    )
+    return <div className='container'>{props.children}</div>
 }

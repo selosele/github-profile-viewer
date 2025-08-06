@@ -8,9 +8,9 @@ export default function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="*" element={<Layout.Wrapper />}>
+                <Route path='*' element={<Layout.Wrapper />}>
                     <Route index element={<Home />} />
-                    <Route path=":userName" element={<Search />} />
+                    <Route path=':userName' element={<Search />} />
                 </Route>
             </Routes>
         </BrowserRouter>

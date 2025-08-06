@@ -31,13 +31,14 @@ export default function useFetchUser(userName: string) {
         }
     }
 
-    const isTestMode = (mode: string) => isNotBlank(mode) && mode === MODES.TEST && isNotBlank(userName)
+    const isTestMode = (mode: string) =>
+        isNotBlank(mode) && mode === MODES.TEST && isNotBlank(userName)
 
     return {
         data,
         isLoading,
         isError,
         setUserName,
-        handleKeyUp
+        handleKeyUp,
     }
 }

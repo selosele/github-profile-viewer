@@ -1,3 +1,3 @@
 export const MODES = {
-    TEST: 'TEST'
+    TEST: 'TEST',
 } as const

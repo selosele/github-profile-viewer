@@ -10,12 +10,14 @@ export default function Header() {
     const { setUserName, handleKeyUp } = useFetchUser(userName)
 
     return (
-        <header className="header">
+        <header className='header'>
             <Container>
-                <h1 className="logo">
-                    <Link to="/">
-                        <span className="icon"><i className="xi-github"></i></span>
-                        <span className="text">GitHub Profile Viewer</span>
+                <h1 className='logo'>
+                    <Link to='/'>
+                        <span className='icon'>
+                            <i className='xi-github'></i>
+                        </span>
+                        <span className='text'>GitHub Profile Viewer</span>
                     </Link>
                 </h1>
 

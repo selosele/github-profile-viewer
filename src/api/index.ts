@@ -1,14 +1,14 @@
 import axios from 'axios'
 
 export const config = {
-  runtime: 'edge',
+    runtime: 'edge',
 }
 
 const http = axios.create({
     baseURL: 'https://api.github.com',
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': `token ${import.meta.env.VITE_ACCESS_TOKEN}`,
+        Authorization: `token ${import.meta.env.VITE_ACCESS_TOKEN}`,
     },
 })
 
