@@ -1,3 +1,3 @@
-import type { GlobalProps } from './common'
+import type { CommonProps } from './common'
 
-export interface ContainerProps extends GlobalProps {}
+export interface ContainerProps extends CommonProps {}

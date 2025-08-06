@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
+import { Layout } from '@/components/layout'
 import useFetchUser from '@/hooks/useFetchUser'
-import Box from '@/components/layout/Box/Box'
 
 export default function Search() {
     const { userName } = useParams()
@@ -10,7 +10,7 @@ export default function Search() {
     if (isError) return <p>Error fetching user. Check the username.</p>
 
     return (
-        <Box className="result-box">
+        <Layout.Box className="result-box">
             <img src={data.avatar_url} alt={data.login} className="avatar" />
             <div className="info">
                 <h2>{data.name || data.login}</h2>
@@ -19,6 +19,6 @@ export default function Search() {
                 <p>Following: {data.following}</p>
                 <p>Public Repos: {data.public_repos}</p>
             </div>
-        </Box>
+        </Layout.Box>
     )
 }

@@ -1,6 +1,6 @@
-import type { GlobalProps } from './common'
+import type { CommonProps } from './common'
 
-export interface InputProps extends GlobalProps {
+export interface InputProps extends CommonProps {
     type?: string
     placeholder?: string
     className?: string
