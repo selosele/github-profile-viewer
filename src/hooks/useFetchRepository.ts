@@ -1,33 +1,36 @@
-import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import type { InputKeyboardEvent } from '@/types/input'
-import type { User } from '@/types/user'
-import { useUserStore } from '@/stores/userStore'
+import type { GetRepositoryRequest, Repository } from '@/types/repository'
 import { isNotBlank } from '@/utils/lang'
 import { http } from '@/api'
 import { MODES } from '@/constants/modes'
 
-export default function useFetchUser(userName: string) {
-    const navigate = useNavigate()
-    const { setUserName } = useUserStore()
+export default function useFetchRepository(
+    userName: string,
+    params: GetRepositoryRequest
+) {
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['users', userName],
+        queryKey: ['repositories', userName],
         queryFn: async () => await fetchData(MODES.TEST),
         enabled: !!userName,
     })
 
     const fetchData = async (mode?: string) => {
         if (isTestMode(mode)) {
-            const res = await fetch('test_data_user.json')
-            return res.json() as Promise<User>
+            const res = await fetch('test_data_repository.json')
+            return res.json() as Promise<Repository[]>
         }
-        const res = await http.get<User>(`/users/${userName}`)
+        const res = await http.get<Repository[]>(`/users/${userName}/repos`, {
+            params,
+        })
         return res.data
     }
 
     const handleKeyUp = (e: InputKeyboardEvent) => {
-        if (e.key === 'Enter' && isNotBlank(userName)) {
-            navigate(`/${userName.trim()}`)
+        if (isNotBlank(userName)) {
+            return data.filter((d) =>
+                d.full_name.includes(e.currentTarget.value)
+            )
         }
     }
 
@@ -38,7 +41,6 @@ export default function useFetchUser(userName: string) {
         data,
         isLoading,
         isError,
-        setUserName,
         handleKeyUp,
     }
 }

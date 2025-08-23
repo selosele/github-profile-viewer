@@ -28,3 +28,4 @@ dist-ssr
 
 # etc
 test_data.json
+test_data_*.json
