@@ -18,13 +18,13 @@ export interface User {
     type: 'User' | 'Organization'
     site_admin: boolean
     name?: string
-    company?: string | null
-    blog?: string | null
-    location?: string | null
-    email?: string | null
-    hireable?: boolean | null
-    bio?: string | null
-    twitter_username?: string | null
+    company?: string
+    blog?: string
+    location?: string
+    email?: string
+    hireable?: boolean
+    bio?: string
+    twitter_username?: string
     public_repos: number
     public_gists: number
     followers: number

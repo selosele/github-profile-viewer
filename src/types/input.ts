@@ -3,7 +3,6 @@ import type { CommonProps } from './common'
 export interface InputProps extends CommonProps {
     type?: string
     placeholder?: string
-    className?: string
     fullWidth?: boolean
     value?: string | number
     onChange?: (e: InputChangeEvent) => void
