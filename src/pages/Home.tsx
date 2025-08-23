@@ -9,16 +9,15 @@ export default function Home() {
     const { setUserName, handleKeyUp } = useFetchUser(userName)
 
     return (
-        <div className='home'>
-            <Layout.Box className='home-box'>
+        <Layout.Box className='home'>
+            <Layout.Container>
                 <UI.Input
                     placeholder={'Enter GitHub username...'}
                     fullWidth
-                    className={'type2'}
                     onChange={(e) => setUserName(e.target.value)}
                     onKeyUp={handleKeyUp}
                 />
-            </Layout.Box>
-        </div>
+            </Layout.Container>
+        </Layout.Box>
     )
 }

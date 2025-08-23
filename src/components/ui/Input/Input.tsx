@@ -6,7 +6,7 @@ export default function Input({ type = 'text', ...props }: InputProps) {
         <input
             type={type}
             placeholder={props.placeholder}
-            className={`input ${props.className} ${props.fullWidth && 'block'}`}
+            className={`input ${props.className ?? ''} ${props.fullWidth ? 'block' : ''}`}
             style={props.style}
             value={props.value}
             onChange={props.onChange}

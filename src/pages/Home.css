@@ -1,6 +1,6 @@
-.home .box .input {
+.home .input {
     height: 4rem;
-    margin-bottom: 1rem;
     padding: 1rem;
+    background-color: #f6f6f6;
     font-size: 1.3rem;
 }

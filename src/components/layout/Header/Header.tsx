@@ -23,7 +23,6 @@ export default function Header() {
 
                 <UI.Input
                     placeholder={'Enter GitHub username...'}
-                    className={'type1'}
                     onChange={(e) => setUserName(e.target.value)}
                     onKeyUp={handleKeyUp}
                 />

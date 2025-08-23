@@ -1,5 +1,5 @@
 .header {
-    background-color: #24292e;
+    border-bottom: 1px solid #ddd;
 }
 
 .header > .container {
@@ -21,7 +21,6 @@
     height: 100%;
     font-size: 1rem;
     line-height: 1;
-    color: #fff;
 }
 
 .header .logo a .text {

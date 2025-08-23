@@ -1,0 +1,114 @@
+.search .profile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 0.25rem;
+    background-color: #fff;
+}
+
+.search .profile .avatar {
+    overflow: hidden;
+    width: 7.2rem;
+    height: 7.2rem;
+    border-radius: 50%;
+}
+
+.search .profile .avatar .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search .profile .avatar > a {
+    display: block;
+}
+
+.search .profile .info {
+    width: calc(100% - 8.2rem);
+    font-size: 0.9rem;
+}
+
+.search .profile .info .title {
+    font-size: 1.5rem;
+}
+
+
+.search .profile .info .about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.search .profile .info .about .text {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.search .profile .info .about a.text {
+    color: rgb(0, 136, 204);
+}
+
+.search .profile .info .about .text ~ .text {
+    margin-left: 0.5rem;
+}
+
+.search .profile .info .about .text-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    width: 100%;
+    padding: 0.2rem;
+}
+
+.search .profile .info .about .text-box > * {
+    width: 100%;
+}
+
+.search .profile .info .about .num-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 14rem;
+    margin-top: 0.5rem;
+}
+
+.search .profile .info .about .num-box > * {
+    width: calc(50% - 1rem);
+}
+
+.search .repo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    background-color: #f6f8fa;
+}
+
+.search .repo .search-area {
+    width: 100%;
+}
+
+.search .repo .search-area .text-box {
+    font-size: 0.9rem;
+}
+
+.search .repo .search-area .text-box .num {
+    margin-left: 0.25rem;
+    font-size: 0.8rem;
+}
+
+.search .repo .search-area .input {
+    margin-top: 0.5rem;
+    border: 1px solid #ddd;
+}
+
+.search .repo .search-area .result {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: #fff;
+}
