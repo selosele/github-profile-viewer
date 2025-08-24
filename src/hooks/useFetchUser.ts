@@ -5,7 +5,6 @@ import type { User } from '@/types/user'
 import { useUserStore } from '@/stores/userStore'
 import { isNotBlank } from '@/utils/lang'
 import { http } from '@/api'
-import { MODES } from '@/constants/modes'
 
 export default function useFetchUser(userName: string) {
     const navigate = useNavigate()
@@ -16,8 +15,8 @@ export default function useFetchUser(userName: string) {
         enabled: !!userName,
     })
 
-    const fetchData = async (mode?: string) => {
-        if (isTestMode(mode)) {
+    const fetchData = async () => {
+        if (isTestMode()) {
             const res = await fetch('test_data_user.json')
             return res.json() as Promise<User>
         }
@@ -31,8 +30,8 @@ export default function useFetchUser(userName: string) {
         }
     }
 
-    const isTestMode = (mode: string) =>
-        isNotBlank(mode) && mode === MODES.TEST && isNotBlank(userName)
+    const isTestMode = () =>
+        import.meta.env.VITE_MODE === 'TEST' && isNotBlank(userName)
 
     return {
         data,

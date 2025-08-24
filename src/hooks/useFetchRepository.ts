@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query'
 import type { GetRepositoryRequest, Repository } from '@/types/repository'
 import { isNotBlank } from '@/utils/lang'
 import { http } from '@/api'
-import { MODES } from '@/constants/modes'
 
 export default function useFetchRepository(
     userName: string,
@@ -14,8 +13,8 @@ export default function useFetchRepository(
         enabled: !!userName,
     })
 
-    const fetchData = async (mode?: string) => {
-        if (isTestMode(mode)) {
+    const fetchData = async () => {
+        if (isTestMode()) {
             const res = await fetch('test_data_repository.json')
             return res.json() as Promise<Repository[]>
         }
@@ -25,8 +24,8 @@ export default function useFetchRepository(
         return res.data
     }
 
-    const isTestMode = (mode: string) =>
-        isNotBlank(mode) && mode === MODES.TEST && isNotBlank(userName)
+    const isTestMode = () =>
+        import.meta.env.VITE_MODE === 'TEST' && isNotBlank(userName)
 
     return {
         data,
