@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import { UI } from '@/components/ui'
 import { isNotBlank } from '@/utils/lang'
+import { dateUtil } from '@/utils/date'
 import type { InputKeyboardEvent } from '@/types/input'
 import { useUserStore } from '@/stores/userStore'
 import { useRepositoryStore } from '@/stores/repositoryStore'
 import useFetchRepository from '@/hooks/useFetchRepository'
 
-export default function SearchRepository({ userName }) {
+export default function SearchRepository({ userName }: { userName: string }) {
     const { user } = useUserStore()
     const { searchRepositories, setSearchRepositories } = useRepositoryStore()
     const { data, isLoading, isError } = useFetchRepository(user?.login, {
@@ -35,13 +36,13 @@ export default function SearchRepository({ userName }) {
             {!isLoading && !isError && (
                 <div className='repo'>
                     <div className='search-area'>
-                        <p className='text-box'>
+                        <div className='text-box'>
                             Public Repositories{' '}
-                            <span className='num'>
+                            <p className='num'>
                                 {searchRepositories?.length ??
                                     user?.public_repos}
-                            </span>
-                        </p>
+                            </p>
+                        </div>
                         <UI.Input
                             placeholder={'Search repository..'}
                             onKeyUp={(e) => {
@@ -54,14 +55,68 @@ export default function SearchRepository({ userName }) {
                             searchRepositories.length === 0 ? (
                                 <p>No repositories found.</p>
                             ) : (
-                                <ul>
+                                <ul className='repo-list'>
                                     {searchRepositories?.map((repo, index) => (
-                                        <li key={repo.id || index}>
-                                            <div>
-                                                <p>{repo.name}</p>
-                                                <p>{repo.description}</p>
-                                                <p>{repo.language}</p>
-                                                <p>Updated {repo.updated_at}</p>
+                                        <li key={index}>
+                                            <div className='cont'>
+                                                <div className='left'>
+                                                    <p className='name'>
+                                                        <a
+                                                            href={repo.html_url}
+                                                            target='_blank'
+                                                        >
+                                                            {repo.name}
+                                                        </a>
+                                                    </p>
+                                                    <p className='desc'>
+                                                        {repo.description}
+                                                    </p>
+                                                    <p>
+                                                        {repo.language && (
+                                                            <span className='lang'>
+                                                                {repo.language}
+                                                            </span>
+                                                        )}
+                                                        {repo.updated_at && (
+                                                            <span className='updated-at'>
+                                                                Updated{' '}
+                                                                {dateUtil(
+                                                                    repo.updated_at
+                                                                ).format(
+                                                                    'YYYY-MM-DD HH:mm:ss'
+                                                                )}
+                                                            </span>
+                                                        )}
+                                                    </p>
+                                                </div>
+                                                <div className='right'>
+                                                    <div className='num-box'>
+                                                        <p>
+                                                            <span>
+                                                                {
+                                                                    repo.stargazers_count
+                                                                }
+                                                            </span>{' '}
+                                                            Stars
+                                                        </p>
+                                                        <p>
+                                                            <span>
+                                                                {
+                                                                    repo.forks_count
+                                                                }
+                                                            </span>{' '}
+                                                            Forks
+                                                        </p>
+                                                        <p>
+                                                            <span>
+                                                                {
+                                                                    repo.open_issues_count
+                                                                }
+                                                            </span>{' '}
+                                                            Issues
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </li>
                                     ))}
