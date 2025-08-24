@@ -120,7 +120,12 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     padding: 1rem;
+}
+
+.search .repo .repo-list > li .cont .left {
+    width: calc(100% - 6rem);
 }
 
 .search .repo .repo-list > li + li .cont {
@@ -151,6 +156,7 @@
 }
 
 .search .repo .repo-list > li .cont .right {
+    width: 5rem;
     padding-left: 1.5rem;
     border-left: 1px solid #eee;
 }
@@ -159,7 +165,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    width: 5rem;
     font-size: 0.75rem;
     color: rgb(108, 118, 137);
 }
