@@ -45,6 +45,7 @@ export default function SearchUser({ userName }: { userName: string }) {
                             </a>
                             <div className='text-box'>
                                 {data.bio && <p>{data.bio}</p>}
+                                {data.company && <p>Company: {data.company}</p>}
                                 {data.blog && (
                                     <p>
                                         Website:{' '}
