@@ -18,11 +18,7 @@ export default function SearchUser({ userName }) {
             {!isLoading && !isError && (
                 <div className='profile'>
                     <div className='avatar'>
-                        <a
-                            href={data.avatar_url}
-                            target='_blank'
-                            title='새 창에서 열립니다'
-                        >
+                        <a href={data.avatar_url} target='_blank'>
                             <img
                                 src={data.avatar_url}
                                 alt={data.login}
@@ -41,7 +37,6 @@ export default function SearchUser({ userName }) {
                             <a
                                 href={data.html_url}
                                 target='_blank'
-                                title='새 창에서 열립니다'
                                 className='text'
                             >
                                 <i className='xi-github'></i>
@@ -55,7 +50,6 @@ export default function SearchUser({ userName }) {
                                         <a
                                             href={`https://${data.blog}`}
                                             target='_blank'
-                                            title='새 창에서 열립니다'
                                         >
                                             {data.blog}
                                         </a>

@@ -18,7 +18,7 @@ export default function SearchRepository({ userName }) {
         setSearchRepositories(data)
     }, [data])
 
-    const handleKeyUp = (e: InputKeyboardEvent) => {
+    const handleSearch = (e: InputKeyboardEvent) => {
         if (isNotBlank(userName)) {
             return data.filter((d) =>
                 d.full_name.includes(e.currentTarget.value)
@@ -45,7 +45,7 @@ export default function SearchRepository({ userName }) {
                         <UI.Input
                             placeholder={'Search repository..'}
                             onKeyUp={(e) => {
-                                const result = handleKeyUp(e)
+                                const result = handleSearch(e)
                                 setSearchRepositories(result)
                             }}
                         />
