@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useUserStore } from '@/stores/userStore'
 import useFetchUser from '@/hooks/useFetchUser'
+import { dateUtil } from '@/utils/date'
 
 export default function SearchUser({ userName }: { userName: string }) {
     const { data, isLoading, isError } = useFetchUser(userName)
@@ -67,6 +68,10 @@ export default function SearchUser({ userName }: { userName: string }) {
                                         </a>
                                     </p>
                                 )}
+                                <p>
+                                    GitHub member since{' '}
+                                    {dateUtil(data.created_at).format('YYYY')}
+                                </p>
                                 <div className='num-box'>
                                     <p>
                                         Following:{' '}
