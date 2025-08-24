@@ -1,4 +1,4 @@
-import type { BoxProps } from '@/types/box'
+import type { BoxProps } from '@/types/layout'
 import './Box.css'
 
 export default function Box(props: BoxProps) {

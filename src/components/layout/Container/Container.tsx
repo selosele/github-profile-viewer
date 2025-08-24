@@ -1,4 +1,4 @@
-import type { ContainerProps } from '@/types/container'
+import type { ContainerProps } from '@/types/layout'
 import './Container.css'
 
 export default function Container(props: ContainerProps) {
