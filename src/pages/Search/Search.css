@@ -115,6 +115,14 @@
     background-color: #fff;
 }
 
+.search .repo .search-area .result:has(.no-data) {
+    padding: 1rem;
+}
+
+.search .repo .search-area .result .no-data {
+    font-size: 0.9rem;
+}
+
 .search .repo .repo-list > li .cont {
     display: flex;
     flex-wrap: wrap;

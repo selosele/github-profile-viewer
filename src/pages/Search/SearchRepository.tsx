@@ -53,7 +53,9 @@ export default function SearchRepository({ userName }: { userName: string }) {
                         <div className='result'>
                             {searchRepositories &&
                             searchRepositories.length === 0 ? (
-                                <p>No repositories found.</p>
+                                <p className='no-data'>
+                                    No repositories found.
+                                </p>
                             ) : (
                                 <ul className='repo-list'>
                                     {searchRepositories?.map((repo, index) => (
