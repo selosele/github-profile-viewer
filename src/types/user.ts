@@ -34,6 +34,8 @@ export interface User {
 }
 
 export type UserStore = {
+    user: User
     userName: string
+    setUser: (user: User) => void
     setUserName: (name: string) => void
 }

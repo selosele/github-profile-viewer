@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import type { InputKeyboardEvent } from '@/types/input'
 import type { GetRepositoryRequest, Repository } from '@/types/repository'
 import { isNotBlank } from '@/utils/lang'
 import { http } from '@/api'
@@ -11,7 +10,7 @@ export default function useFetchRepository(
 ) {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['repositories', userName],
-        queryFn: async () => await fetchData(MODES.TEST),
+        queryFn: async () => await fetchData(),
         enabled: !!userName,
     })
 
@@ -26,14 +25,6 @@ export default function useFetchRepository(
         return res.data
     }
 
-    const handleKeyUp = (e: InputKeyboardEvent) => {
-        if (isNotBlank(userName)) {
-            return data.filter((d) =>
-                d.full_name.includes(e.currentTarget.value)
-            )
-        }
-    }
-
     const isTestMode = (mode: string) =>
         isNotBlank(mode) && mode === MODES.TEST && isNotBlank(userName)
 
@@ -41,6 +32,5 @@ export default function useFetchRepository(
         data,
         isLoading,
         isError,
-        handleKeyUp,
     }
 }

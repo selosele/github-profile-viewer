@@ -12,7 +12,7 @@ export default function useFetchUser(userName: string) {
     const { setUserName } = useUserStore()
     const { data, isLoading, isError } = useQuery({
         queryKey: ['users', userName],
-        queryFn: async () => await fetchData(MODES.TEST),
+        queryFn: async () => await fetchData(),
         enabled: !!userName,
     })
 

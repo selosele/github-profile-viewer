@@ -108,6 +108,7 @@ export interface Repository {
 
 export interface GetRepositoryRequest {
     sort?: string
+    per_page?: number
 }
 
 export type RepositoryStore = {
