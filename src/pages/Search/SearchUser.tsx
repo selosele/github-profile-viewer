@@ -43,7 +43,7 @@ export default function SearchUser({ userName }: { userName: string }) {
                                 <span>{data.login}</span>
                             </a>
                             <div className='text-box'>
-                                <p>{data.bio || 'No bio available'}</p>
+                                {data.bio && <p>{data.bio}</p>}
                                 {data.blog && (
                                     <p>
                                         Website:{' '}
@@ -70,19 +70,27 @@ export default function SearchUser({ userName }: { userName: string }) {
                                 <div className='num-box'>
                                     <p>
                                         Following:{' '}
-                                        <strong>{data.following}</strong>
+                                        <strong>
+                                            {data.following.toLocaleString()}
+                                        </strong>
                                     </p>
                                     <p>
                                         Followers:{' '}
-                                        <strong>{data.followers}</strong>
+                                        <strong>
+                                            {data.followers.toLocaleString()}
+                                        </strong>
                                     </p>
                                     <p>
                                         Repos:{' '}
-                                        <strong>{data.public_repos}</strong>
+                                        <strong>
+                                            {data.public_repos.toLocaleString()}
+                                        </strong>
                                     </p>
                                     <p>
                                         Gists:{' '}
-                                        <strong>{data.public_gists}</strong>
+                                        <strong>
+                                            {data.public_gists.toLocaleString()}
+                                        </strong>
                                     </p>
                                 </div>
                             </div>

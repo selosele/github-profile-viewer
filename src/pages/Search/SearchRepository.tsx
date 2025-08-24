@@ -93,25 +93,19 @@ export default function SearchRepository({ userName }: { userName: string }) {
                                                     <div className='num-box'>
                                                         <p>
                                                             <span>
-                                                                {
-                                                                    repo.stargazers_count
-                                                                }
+                                                                {repo.stargazers_count.toLocaleString()}
                                                             </span>{' '}
                                                             Stars
                                                         </p>
                                                         <p>
                                                             <span>
-                                                                {
-                                                                    repo.forks_count
-                                                                }
+                                                                {repo.forks_count.toLocaleString()}
                                                             </span>{' '}
                                                             Forks
                                                         </p>
                                                         <p>
                                                             <span>
-                                                                {
-                                                                    repo.open_issues_count
-                                                                }
+                                                                {repo.open_issues_count.toLocaleString()}
                                                             </span>{' '}
                                                             Issues
                                                         </p>
