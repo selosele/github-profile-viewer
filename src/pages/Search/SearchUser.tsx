@@ -55,6 +55,18 @@ export default function SearchUser({ userName }: { userName: string }) {
                                         </a>
                                     </p>
                                 )}
+                                {data.email && <p>Email: {data.email}</p>}
+                                {data.twitter_username && (
+                                    <p>
+                                        Twitter:{' '}
+                                        <a
+                                            href={`https://twitter.com/${data.twitter_username}`}
+                                            target='_blank'
+                                        >
+                                            @{data.twitter_username}
+                                        </a>
+                                    </p>
+                                )}
                                 <div className='num-box'>
                                     <p>
                                         Following:{' '}
