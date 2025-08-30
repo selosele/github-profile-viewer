@@ -1,4 +1,4 @@
-import type { InputProps } from '@/types/input'
+import type { InputProps } from '@/types/form'
 import './Input.css'
 
 export default function Input({ type = 'text', ...props }: InputProps) {

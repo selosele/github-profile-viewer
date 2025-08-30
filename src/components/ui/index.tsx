@@ -1,3 +1,4 @@
 import Input from './Input/Input'
+import Select from './Select/Select'
 
-export const UI = { Input }
+export const UI = { Input, Select }
