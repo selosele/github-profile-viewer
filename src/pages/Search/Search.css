@@ -1,0 +1,311 @@
+.search .profile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 0.25rem;
+    background-color: #fff;
+}
+
+.search .profile .avatar {
+    overflow: hidden;
+    width: 7.2rem;
+    height: 7.2rem;
+    border-radius: 50%;
+}
+
+.search .profile .avatar .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search .profile .avatar > a {
+    display: block;
+}
+
+.search .profile .info {
+    width: calc(100% - 8.2rem);
+    font-size: 0.9rem;
+}
+
+.search .profile .info .title {
+    font-size: 1.5rem;
+}
+
+
+.search .profile .info .about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.search .profile .info .about .text {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.search .profile .info .about a.text {
+    color: rgb(0, 136, 204);
+}
+
+.search .profile .info .about .text ~ .text {
+    margin-left: 0.5rem;
+}
+
+.search .profile .info .about .text-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    width: 100%;
+    padding: 0.2rem;
+}
+
+.search .profile .info .about .text-box > * {
+    width: 100%;
+}
+
+.search .profile .info .about .num-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 18rem;
+    margin-top: 0.5rem;
+}
+
+.search .profile .info .about .num-box > * {
+    width: calc(50% - 1rem);
+}
+
+.search .repo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    background-color: #f6f8fa;
+}
+
+.search .repo .search-area {
+    width: 100%;
+}
+
+.search .repo .search-area .top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search .repo .search-area .text-box {
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.search .repo .search-area .text-box .num {
+    margin-left: 0.25rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.search .repo .search-area .bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search .repo .search-area .input {
+    margin-top: 0.5rem;
+    border: 1px solid #ddd;
+}
+
+.search .repo .search-area .result {
+    margin-top: 1rem;
+    background-color: #fff;
+}
+
+.search .repo .search-area .result:has(.no-data) {
+    padding: 1rem;
+}
+
+.search .repo .search-area .result .no-data {
+    font-size: 0.9rem;
+}
+
+.search .repo .repo-list > li .cont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.search .repo .repo-list > li .cont .left {
+    width: calc(100% - 9rem);
+}
+
+.search .repo .repo-list > li + li .cont {
+    border-top: 1px solid #eee;
+}
+
+.search .repo .repo-list > li .cont .name {
+    font-weight: 600;
+    color: #333;
+}
+
+.search .repo .repo-list > li .cont .desc {
+    margin: 0.7rem 0;
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.search .repo .repo-list > li .cont .lang {
+    margin-right: 1rem;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: rgb(108, 118, 137);
+}
+
+.search .repo .repo-list > li .cont .fork {
+    margin-right: 1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    border: 1px solid #ccc;
+    font-size: 0.7rem;
+    color: rgb(108, 118, 137);
+}
+
+.search .repo .repo-list > li .cont .updated-at {
+    font-size: 0.7rem;
+    color: rgb(108, 118, 137);
+}
+
+.search .repo .repo-list > li .cont .right {
+    width: 8rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid #eee;
+}
+
+.search .repo .repo-list > li .cont .num-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: rgb(108, 118, 137);
+}
+
+
+.search .repo .repo-list > li .cont .num-box > p {
+    width: 100%;
+}
+
+.search .repo .repo-list > li .cont .num-box > p span {
+    margin-right: 0.2rem;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .search .profile {
+        padding: 0;
+    }
+
+    .search .profile .avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .search .profile .info .title {
+        font-size: 24px;
+    }
+
+    .search .profile .info .about {
+        font-size: 16px;
+    }
+
+    .search .repo {
+        margin-top: 1rem;
+    }
+
+    .search .repo .search-area .text-box {
+        font-size: 16px;
+    }
+
+    .search .repo .search-area .text-box .num {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .search .profile {
+        justify-content: center;
+    }
+
+    .search .profile .avatar {
+        width: 70px;
+        height: 70px;
+    }
+
+    .search .profile .info .title {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .search .profile .info {
+        width: 100%;
+    }
+
+    .search .profile .info .about {
+        font-size: 15px;
+    }
+
+    .search .profile .info .about .num-box {
+        width: 100%;
+    }
+
+    .search .repo {
+        padding: 15px;
+    }
+
+    .search .repo .search-area .text-box {
+        font-size: 15px;
+    }
+
+    .search .repo .search-area .input {
+        width: 100%;
+    }
+
+    .search .repo .repo-list > li .cont {
+        padding: 15px;
+    }
+
+    .search .repo .repo-list > li .cont .left {
+        width: 100%;
+    }
+
+    .search .repo .repo-list > li .cont .name {
+        font-size: 16px;
+    }
+
+    .search .repo .repo-list > li .cont .desc {
+        font-size: 14px;
+    }
+
+    .search .repo .repo-list > li .cont .right {
+        width: 100%;
+        padding-left: 0;
+        border-left: 0;
+    }
+
+    .search .repo .repo-list > li .cont .num-box > p {
+        width: auto;
+    }
+}
