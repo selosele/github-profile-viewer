@@ -1,17 +1,18 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { UI } from '@/components/ui'
 import { isNotBlank } from '@/utils/lang'
 import { dateUtil } from '@/utils/date'
-import type { InputKeyboardEvent } from '@/types/input'
+import type { InputKeyboardEvent } from '@/types/form'
 import { useUserStore } from '@/stores/userStore'
 import { useRepositoryStore } from '@/stores/repositoryStore'
 import useFetchRepository from '@/hooks/useFetchRepository'
 
 export default function SearchRepository({ userName }: { userName: string }) {
+    const [sort, setSort] = useState<string>('pushed')
     const { user } = useUserStore()
     const { searchRepositories, setSearchRepositories } = useRepositoryStore()
     const { data, isLoading, isError } = useFetchRepository(user?.login, {
-        sort: 'pushed',
+        sort: sort,
         per_page: user?.public_repos,
     })
 
@@ -36,12 +37,27 @@ export default function SearchRepository({ userName }: { userName: string }) {
             {!isLoading && !isError && (
                 <div className='repo'>
                     <div className='search-area'>
-                        <div className='text-box'>
-                            Public Repositories{' '}
-                            <p className='num'>
-                                {searchRepositories?.length ??
-                                    user?.public_repos}
-                            </p>
+                        <div className='top'>
+                            <div className='text-box'>
+                                Public Repositories{' '}
+                                <p className='num'>
+                                    {searchRepositories?.length ??
+                                        user?.public_repos}
+                                </p>
+                            </div>
+                            <div>
+                                <UI.Select
+                                    id={'sortBy'}
+                                    label={'Sort by:'}
+                                    value={sort}
+                                    data={[
+                                        { value: 'pushed', text: 'Pushed' },
+                                        { value: 'updated', text: 'Updated' },
+                                        { value: 'created', text: 'Created' },
+                                    ]}
+                                    onChange={(e) => setSort(e.target.value)}
+                                />
+                            </div>
                         </div>
                         <UI.Input
                             placeholder={'Search repository..'}

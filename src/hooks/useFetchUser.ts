@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import type { InputKeyboardEvent } from '@/types/input'
+import type { InputKeyboardEvent } from '@/types/form'
 import type { User } from '@/types/user'
 import { useUserStore } from '@/stores/userStore'
 import { isNotBlank } from '@/utils/lang'

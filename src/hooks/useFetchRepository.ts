@@ -8,7 +8,7 @@ export default function useFetchRepository(
     params: GetRepositoryRequest
 ) {
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['repositories', userName],
+        queryKey: ['repositories', userName, params],
         queryFn: async () => await fetchData(),
         enabled: !!userName,
     })
