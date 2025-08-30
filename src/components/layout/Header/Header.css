@@ -1,5 +1,8 @@
 .header {
+    position: sticky;
+    top: 0;
     border-bottom: 1px solid #ddd;
+    background-color: #fff;
 }
 
 .header > .container {
