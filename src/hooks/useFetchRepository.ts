@@ -9,7 +9,7 @@ export default function useFetchRepository(
     params: GetRepositoryRequest
 ) {
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['repositories', userName, params],
+        queryKey: ['repositories', userName, params.sort, params.per_page],
         queryFn: async () => await fetchData(),
         enabled: !!userName,
     })
@@ -20,7 +20,10 @@ export default function useFetchRepository(
             return res.json() as Promise<Repository[]>
         }
         const res = await http.get<Repository[]>(endpoints.repos(userName), {
-            params,
+            params: {
+                sort: params.sort,
+                per_page: params.per_page,
+            },
         })
         return res.data
     }
