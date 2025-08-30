@@ -1,6 +1,6 @@
 # GitHub Profile Viewer
 
-간단한 GitHub 사용자/저장소 조회 웹 사이트입니다.
+간단한 GitHub 사용자 저장소 조회 웹 사이트입니다.
 
 - 접속 URL: [ghpv.selosele.com](https://ghpv.selosele.com)
 
