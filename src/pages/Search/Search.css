@@ -94,15 +94,22 @@
     width: 100%;
 }
 
+.search .repo .search-area .top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .search .repo .search-area .text-box {
     font-size: 0.9rem;
-    color: #333;
+    color: #444;
 }
 
 .search .repo .search-area .text-box .num {
     margin-left: 0.25rem;
     font-weight: 700;
     font-size: 0.8rem;
+    color: #333;
 }
 
 .search .repo .search-area .input {
