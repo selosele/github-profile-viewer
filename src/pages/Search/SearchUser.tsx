@@ -77,25 +77,25 @@ export default function SearchUser({ userName }: { userName: string }) {
                                     <p>
                                         Following:{' '}
                                         <strong>
-                                            {data.following.toLocaleString()}
+                                            {data.following?.toLocaleString()}
                                         </strong>
                                     </p>
                                     <p>
                                         Followers:{' '}
                                         <strong>
-                                            {data.followers.toLocaleString()}
+                                            {data.followers?.toLocaleString()}
                                         </strong>
                                     </p>
                                     <p>
                                         Repos:{' '}
                                         <strong>
-                                            {data.public_repos.toLocaleString()}
+                                            {data.public_repos?.toLocaleString()}
                                         </strong>
                                     </p>
                                     <p>
                                         Gists:{' '}
                                         <strong>
-                                            {data.public_gists.toLocaleString()}
+                                            {data.public_gists?.toLocaleString()}
                                         </strong>
                                     </p>
                                 </div>

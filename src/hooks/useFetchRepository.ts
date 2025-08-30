@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import type { GetRepositoryRequest, Repository } from '@/types/repository'
 import { isNotBlank } from '@/utils/lang'
 import { http } from '@/api'
+import { endpoints } from '@/api/endpoints'
 
 export default function useFetchRepository(
     userName: string,
@@ -18,7 +19,7 @@ export default function useFetchRepository(
             const res = await fetch('test_data_repository.json')
             return res.json() as Promise<Repository[]>
         }
-        const res = await http.get<Repository[]>(`/users/${userName}/repos`, {
+        const res = await http.get<Repository[]>(endpoints.repos(userName), {
             params,
         })
         return res.data

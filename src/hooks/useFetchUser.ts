@@ -5,6 +5,7 @@ import type { User } from '@/types/user'
 import { useUserStore } from '@/stores/userStore'
 import { isNotBlank } from '@/utils/lang'
 import { http } from '@/api'
+import { endpoints } from '@/api/endpoints'
 
 export default function useFetchUser(userName: string) {
     const navigate = useNavigate()
@@ -20,7 +21,7 @@ export default function useFetchUser(userName: string) {
             const res = await fetch('test_data_user.json')
             return res.json() as Promise<User>
         }
-        const res = await http.get<User>(`/users/${userName}`)
+        const res = await http.get<User>(endpoints.user(userName))
         return res.data
     }
 
