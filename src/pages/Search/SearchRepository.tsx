@@ -29,6 +29,9 @@ export default function SearchRepository() {
                       .includes(searchKeyword.toLowerCase())
                 : true
 
+            // 주의: 검색조건으로 필터링 x, 포함 o
+            // 예) forked 체크시 포크저장소 리스트만 반환되면 안됨
+            // 즉 포크저장소를 포함하는 전체 검색결과를 반환
             const matchForked = include.includes('forked') || !repo.fork
             const matchArchived = include.includes('archived') || !repo.archived
 
