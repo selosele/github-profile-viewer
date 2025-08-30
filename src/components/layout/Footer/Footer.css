@@ -4,3 +4,9 @@
     font-size: 0.75rem;
     color: #fff;
 }
+
+@media (max-width: 600px) {
+    .footer {
+        padding: 20px;
+    }
+}

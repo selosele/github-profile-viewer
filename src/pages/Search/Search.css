@@ -99,6 +99,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .search .repo .search-area .text-box {
@@ -118,6 +119,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .search .repo .search-area .input {
@@ -209,4 +211,101 @@
 .search .repo .repo-list > li .cont .num-box > p span {
     margin-right: 0.2rem;
     font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .search .profile {
+        padding: 0;
+    }
+
+    .search .profile .avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .search .profile .info .title {
+        font-size: 24px;
+    }
+
+    .search .profile .info .about {
+        font-size: 16px;
+    }
+
+    .search .repo {
+        margin-top: 1rem;
+    }
+
+    .search .repo .search-area .text-box {
+        font-size: 16px;
+    }
+
+    .search .repo .search-area .text-box .num {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .search .profile {
+        justify-content: center;
+    }
+
+    .search .profile .avatar {
+        width: 70px;
+        height: 70px;
+    }
+
+    .search .profile .info .title {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .search .profile .info {
+        width: 100%;
+    }
+
+    .search .profile .info .about {
+        font-size: 15px;
+    }
+
+    .search .profile .info .about .num-box {
+        width: 100%;
+    }
+
+    .search .repo {
+        padding: 15px;
+    }
+
+    .search .repo .search-area .text-box {
+        font-size: 15px;
+    }
+
+    .search .repo .search-area .input {
+        width: 100%;
+    }
+
+    .search .repo .repo-list > li .cont {
+        padding: 15px;
+    }
+
+    .search .repo .repo-list > li .cont .left {
+        width: 100%;
+    }
+
+    .search .repo .repo-list > li .cont .name {
+        font-size: 16px;
+    }
+
+    .search .repo .repo-list > li .cont .desc {
+        font-size: 14px;
+    }
+
+    .search .repo .repo-list > li .cont .right {
+        width: 100%;
+        padding-left: 0;
+        border-left: 0;
+    }
+
+    .search .repo .repo-list > li .cont .num-box > p {
+        width: auto;
+    }
 }

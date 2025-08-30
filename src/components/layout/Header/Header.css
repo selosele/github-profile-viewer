@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: space-between;
     height: 2.6rem;
+    padding: 0 1rem;
 }
 
 .header .logo {
@@ -29,4 +30,14 @@
 .header .logo a .text {
     font-weight: 400;
     font-size: 0.75rem;
+}
+
+@media (max-width: 500px) {
+    .header .logo a .text {
+        text-indent: -9999px;
+    }
+    
+    .header .input {
+        width: 180px;
+    }
 }
