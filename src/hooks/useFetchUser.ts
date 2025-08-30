@@ -4,8 +4,8 @@ import type { InputKeyboardEvent } from '@/types/form'
 import type { User } from '@/types/user'
 import { useUserStore } from '@/stores/userStore'
 import { isNotBlank } from '@/utils/lang'
-import { http } from '@/api'
-import { endpoints } from '@/api/endpoints'
+import { http } from 'api'
+import { endpoints } from 'api/endpoints'
 
 export default function useFetchUser(userName: string) {
     const navigate = useNavigate()

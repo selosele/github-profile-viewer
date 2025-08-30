@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import type { GetRepositoryRequest, Repository } from '@/types/repository'
 import { isNotBlank } from '@/utils/lang'
-import { http } from '@/api'
-import { endpoints } from '@/api/endpoints'
+import { http } from 'api'
+import { endpoints } from 'api/endpoints'
 
 export default function useFetchRepository(
     userName: string,
