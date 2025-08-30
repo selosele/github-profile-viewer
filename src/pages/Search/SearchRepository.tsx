@@ -15,6 +15,7 @@ export default function SearchRepository() {
     const { user } = useUserStore()
     const { searchRepositories, setSearchRepositories } = useRepositoryStore()
     const { data, isLoading, isError } = useFetchRepository(user?.login, {
+        userName: user?.login,
         sort: sort,
         per_page: user?.public_repos,
     })

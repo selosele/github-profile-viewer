@@ -107,6 +107,7 @@ export interface Repository {
 }
 
 export interface GetRepositoryRequest {
+    userName?: string
     sort?: string
     per_page?: number
 }
