@@ -20,10 +20,7 @@ export default function useFetchRepository(
             return res.json() as Promise<Repository[]>
         }
         const res = await http.get<Repository[]>(endpoints.repos(userName), {
-            params: {
-                sort: params.sort,
-                per_page: params.per_page,
-            },
+            params,
         })
         return res.data
     }
