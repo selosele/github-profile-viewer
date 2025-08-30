@@ -2,13 +2,16 @@ import { useEffect, useState } from 'react'
 import { UI } from '@/components/ui'
 import { isNotBlank } from '@/utils/lang'
 import { dateUtil } from '@/utils/date'
-import type { InputKeyboardEvent } from '@/types/form'
+import type { CheckboxChangeEvent, InputKeyboardEvent } from '@/types/form'
 import { useUserStore } from '@/stores/userStore'
 import { useRepositoryStore } from '@/stores/repositoryStore'
 import useFetchRepository from '@/hooks/useFetchRepository'
 
-export default function SearchRepository({ userName }: { userName: string }) {
+export default function SearchRepository() {
     const [sort, setSort] = useState<string>('pushed')
+    const [include, setInclude] = useState<string[]>(['forked', 'archived'])
+    const [searchKeyword, setSearchKeyword] = useState<string>()
+
     const { user } = useUserStore()
     const { searchRepositories, setSearchRepositories } = useRepositoryStore()
     const { data, isLoading, isError } = useFetchRepository(user?.login, {
@@ -16,17 +19,37 @@ export default function SearchRepository({ userName }: { userName: string }) {
         per_page: user?.public_repos,
     })
 
+    const filterRepositories = () => {
+        if (!data) return []
+
+        return data.filter((repo) => {
+            const matchKeyword = isNotBlank(searchKeyword)
+                ? repo.full_name
+                      .toLowerCase()
+                      .includes(searchKeyword.toLowerCase())
+                : true
+
+            const matchForked = include.includes('forked') || !repo.fork
+            const matchArchived = include.includes('archived') || !repo.archived
+
+            return matchKeyword && matchForked && matchArchived
+        })
+    }
+
     useEffect(() => {
-        setSearchRepositories(data)
-    }, [data])
+        setSearchRepositories(filterRepositories())
+    }, [data, include, searchKeyword])
+
+    const handleCheck = (e: CheckboxChangeEvent) => {
+        const { checked, value } = e.target
+        const nextInclude = checked
+            ? [...include, value]
+            : include.filter((v) => v !== value)
+        setInclude(nextInclude)
+    }
 
     const handleSearch = (e: InputKeyboardEvent) => {
-        if (isNotBlank(userName)) {
-            return data.filter((d) =>
-                d.full_name.includes(e.currentTarget.value)
-            )
-        }
-        return data
+        setSearchKeyword(e.currentTarget.value)
     }
 
     return (
@@ -59,13 +82,31 @@ export default function SearchRepository({ userName }: { userName: string }) {
                                 />
                             </div>
                         </div>
-                        <UI.Input
-                            placeholder={'Search repository..'}
-                            onKeyUp={(e) => {
-                                const result = handleSearch(e)
-                                setSearchRepositories(result)
-                            }}
-                        />
+                        <div className='bottom'>
+                            <UI.Input
+                                placeholder={'Search repository..'}
+                                onKeyUp={handleSearch}
+                            />
+                            <div>
+                                <UI.CheckboxGroup
+                                    label={'Include:'}
+                                    style={{ width: '15.2rem' }}
+                                >
+                                    <UI.Checkbox
+                                        checked={include.includes('forked')}
+                                        value={'forked'}
+                                        text={'Forked'}
+                                        onChange={handleCheck}
+                                    />
+                                    <UI.Checkbox
+                                        checked={include.includes('archived')}
+                                        value={'archived'}
+                                        text={'Archived'}
+                                        onChange={handleCheck}
+                                    />
+                                </UI.CheckboxGroup>
+                            </div>
+                        </div>
                         <div className='result'>
                             {searchRepositories &&
                             searchRepositories.length === 0 ? (
@@ -93,6 +134,11 @@ export default function SearchRepository({ userName }: { userName: string }) {
                                                         {repo.language && (
                                                             <span className='lang'>
                                                                 {repo.language}
+                                                            </span>
+                                                        )}
+                                                        {repo.fork && (
+                                                            <span className='fork'>
+                                                                Forked
                                                             </span>
                                                         )}
                                                         {repo.updated_at && (

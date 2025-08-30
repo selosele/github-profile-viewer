@@ -98,6 +98,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
 }
 
 .search .repo .search-area .text-box {
@@ -110,6 +111,13 @@
     font-weight: 700;
     font-size: 0.8rem;
     color: #333;
+}
+
+.search .repo .search-area .bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .search .repo .search-area .input {
@@ -159,8 +167,17 @@
 }
 
 .search .repo .repo-list > li .cont .lang {
-    margin-right: 2rem;
+    margin-right: 1rem;
     font-weight: 700;
+    font-size: 0.7rem;
+    color: rgb(108, 118, 137);
+}
+
+.search .repo .repo-list > li .cont .fork {
+    margin-right: 1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    border: 1px solid #ccc;
     font-size: 0.7rem;
     color: rgb(108, 118, 137);
 }

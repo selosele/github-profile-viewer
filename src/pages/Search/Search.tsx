@@ -11,7 +11,7 @@ export default function Search() {
         <Layout.Box className='search'>
             <Layout.Container>
                 <SearchUser userName={userName} />
-                <SearchRepository userName={userName} />
+                <SearchRepository />
             </Layout.Container>
         </Layout.Box>
     )
