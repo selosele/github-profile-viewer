@@ -33,8 +33,7 @@ export default function useFetchUser(userName: string) {
         }
     }
 
-    const isTestMode = () =>
-        import.meta.env.VITE_MODE === 'TEST' && isNotBlank(userName)
+    const isTestMode = () => import.meta.env.VITE_MODE === 'TEST' && isNotBlank(userName)
 
     return {
         data,

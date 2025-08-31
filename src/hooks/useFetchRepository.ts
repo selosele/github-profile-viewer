@@ -4,10 +4,7 @@ import { isNotBlank } from '@/utils/lang'
 import { http } from 'api'
 import { endpoints } from 'api/endpoints'
 
-export default function useFetchRepository(
-    userName: string,
-    params: GetRepositoryRequest
-) {
+export default function useFetchRepository(userName: string, params: GetRepositoryRequest) {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['repositories', userName, params.sort, params.per_page],
         queryFn: async () => await fetchData(),
@@ -25,8 +22,7 @@ export default function useFetchRepository(
         return res.data
     }
 
-    const isTestMode = () =>
-        import.meta.env.VITE_MODE === 'TEST' && isNotBlank(userName)
+    const isTestMode = () => import.meta.env.VITE_MODE === 'TEST' && isNotBlank(userName)
 
     return {
         data,

@@ -25,9 +25,7 @@ export default function SearchRepository() {
 
         return data.filter((repo) => {
             const matchKeyword = isNotBlank(searchKeyword)
-                ? repo.full_name
-                      .toLowerCase()
-                      .includes(searchKeyword.toLowerCase())
+                ? repo.full_name.toLowerCase().includes(searchKeyword.toLowerCase())
                 : true
 
             // 주의: 검색조건으로 필터링 x, 포함 o
@@ -46,9 +44,7 @@ export default function SearchRepository() {
 
     const handleCheck = (e: CheckboxChangeEvent) => {
         const { checked, value } = e.target
-        const nextInclude = checked
-            ? [...include, value]
-            : include.filter((v) => v !== value)
+        const nextInclude = checked ? [...include, value] : include.filter((v) => v !== value)
         setInclude(nextInclude)
     }
 
@@ -67,10 +63,7 @@ export default function SearchRepository() {
                         <div className='top'>
                             <div className='text-box'>
                                 Public Repositories{' '}
-                                <p className='num'>
-                                    {searchRepositories?.length ??
-                                        user?.public_repos}
-                                </p>
+                                <p className='num'>{searchRepositories?.length ?? user?.public_repos}</p>
                             </div>
                             <div>
                                 <UI.Select
@@ -87,15 +80,9 @@ export default function SearchRepository() {
                             </div>
                         </div>
                         <div className='bottom'>
-                            <UI.Input
-                                placeholder={'Search repository..'}
-                                onKeyUp={handleSearch}
-                            />
+                            <UI.Input placeholder={'Search repository..'} onKeyUp={handleSearch} />
                             <div>
-                                <UI.CheckboxGroup
-                                    label={'Include:'}
-                                    style={{ width: '15.2rem' }}
-                                >
+                                <UI.CheckboxGroup label={'Include:'} style={{ width: '15.2rem' }}>
                                     <UI.Checkbox
                                         checked={include.includes('forked')}
                                         value={'forked'}
@@ -112,11 +99,8 @@ export default function SearchRepository() {
                             </div>
                         </div>
                         <div className='result'>
-                            {searchRepositories &&
-                            searchRepositories.length === 0 ? (
-                                <p className='no-data'>
-                                    No repositories found.
-                                </p>
+                            {searchRepositories && searchRepositories.length === 0 ? (
+                                <p className='no-data'>No repositories found.</p>
                             ) : (
                                 <ul className='repo-list'>
                                     {searchRepositories?.map((repo, index) => (
@@ -124,33 +108,18 @@ export default function SearchRepository() {
                                             <div className='cont'>
                                                 <div className='left'>
                                                     <p className='name'>
-                                                        <a
-                                                            href={repo.html_url}
-                                                            target='_blank'
-                                                        >
+                                                        <a href={repo.html_url} target='_blank'>
                                                             {repo.name}
                                                         </a>
                                                     </p>
-                                                    <p className='desc'>
-                                                        {repo.description}
-                                                    </p>
+                                                    <p className='desc'>{repo.description}</p>
                                                     <p>
-                                                        {repo.language && (
-                                                            <span className='lang'>
-                                                                {repo.language}
-                                                            </span>
-                                                        )}
-                                                        {repo.fork && (
-                                                            <span className='fork'>
-                                                                Forked
-                                                            </span>
-                                                        )}
+                                                        {repo.language && <span className='lang'>{repo.language}</span>}
+                                                        {repo.fork && <span className='fork'>Forked</span>}
                                                         {repo.updated_at && (
                                                             <span className='updated-at'>
                                                                 Updated{' '}
-                                                                {dateUtil(
-                                                                    repo.updated_at
-                                                                ).format(
+                                                                {dateUtil(repo.updated_at).format(
                                                                     'YYYY-MM-DD HH:mm:ss'
                                                                 )}
                                                             </span>
@@ -160,21 +129,13 @@ export default function SearchRepository() {
                                                 <div className='right'>
                                                     <div className='num-box'>
                                                         <p>
-                                                            <span>
-                                                                {repo.stargazers_count.toLocaleString()}
-                                                            </span>{' '}
-                                                            Stars
+                                                            <span>{repo.stargazers_count.toLocaleString()}</span> Stars
                                                         </p>
                                                         <p>
-                                                            <span>
-                                                                {repo.forks_count.toLocaleString()}
-                                                            </span>{' '}
-                                                            Forks
+                                                            <span>{repo.forks_count.toLocaleString()}</span> Forks
                                                         </p>
                                                         <p>
-                                                            <span>
-                                                                {repo.open_issues_count.toLocaleString()}
-                                                            </span>{' '}
+                                                            <span>{repo.open_issues_count.toLocaleString()}</span>{' '}
                                                             Issues
                                                         </p>
                                                     </div>

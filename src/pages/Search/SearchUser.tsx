@@ -20,11 +20,7 @@ export default function SearchUser({ userName }: { userName: string }) {
                 <div className='profile'>
                     <div className='avatar'>
                         <a href={data.avatar_url} target='_blank'>
-                            <img
-                                src={data.avatar_url}
-                                alt={data.login}
-                                className='img'
-                            />
+                            <img src={data.avatar_url} alt={data.login} className='img' />
                         </a>
                     </div>
                     <div className='info'>
@@ -35,11 +31,7 @@ export default function SearchUser({ userName }: { userName: string }) {
                                     <i className='xi-maker'></i> {data.location}
                                 </p>
                             )}
-                            <a
-                                href={data.html_url}
-                                target='_blank'
-                                className='text'
-                            >
+                            <a href={data.html_url} target='_blank' className='text'>
                                 <i className='xi-github'></i>
                                 <span>{data.login}</span>
                             </a>
@@ -49,10 +41,7 @@ export default function SearchUser({ userName }: { userName: string }) {
                                 {data.blog && (
                                     <p>
                                         Website:{' '}
-                                        <a
-                                            href={`https://${data.blog}`}
-                                            target='_blank'
-                                        >
+                                        <a href={`https://${data.blog}`} target='_blank'>
                                             {data.blog}
                                         </a>
                                     </p>
@@ -61,42 +50,24 @@ export default function SearchUser({ userName }: { userName: string }) {
                                 {data.twitter_username && (
                                     <p>
                                         Twitter:{' '}
-                                        <a
-                                            href={`https://twitter.com/${data.twitter_username}`}
-                                            target='_blank'
-                                        >
+                                        <a href={`https://twitter.com/${data.twitter_username}`} target='_blank'>
                                             @{data.twitter_username}
                                         </a>
                                     </p>
                                 )}
-                                <p>
-                                    GitHub member since{' '}
-                                    {dateUtil(data.created_at).format('YYYY')}
-                                </p>
+                                <p>GitHub member since {dateUtil(data.created_at).format('YYYY')}</p>
                                 <div className='num-box'>
                                     <p>
-                                        Following:{' '}
-                                        <strong>
-                                            {data.following?.toLocaleString()}
-                                        </strong>
+                                        Following: <strong>{data.following?.toLocaleString()}</strong>
                                     </p>
                                     <p>
-                                        Followers:{' '}
-                                        <strong>
-                                            {data.followers?.toLocaleString()}
-                                        </strong>
+                                        Followers: <strong>{data.followers?.toLocaleString()}</strong>
                                     </p>
                                     <p>
-                                        Repos:{' '}
-                                        <strong>
-                                            {data.public_repos?.toLocaleString()}
-                                        </strong>
+                                        Repos: <strong>{data.public_repos?.toLocaleString()}</strong>
                                     </p>
                                     <p>
-                                        Gists:{' '}
-                                        <strong>
-                                            {data.public_gists?.toLocaleString()}
-                                        </strong>
+                                        Gists: <strong>{data.public_gists?.toLocaleString()}</strong>
                                     </p>
                                 </div>
                             </div>
