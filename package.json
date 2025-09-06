@@ -5,6 +5,8 @@
     "type": "module",
     "scripts": {
         "dev": "bash ./dev.sh",
+        "dev:wsl": "wsl bash ./dev.sh",
+        "dev:window": "vite",
         "build": "tsc -b && vite build",
         "lint": "eslint .",
         "preview": "vite preview"
